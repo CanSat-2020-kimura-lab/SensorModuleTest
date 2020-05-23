@@ -1,17 +1,24 @@
 # SensorModuleTest
 ***
-
-## GPS  :  AE-GYSFDMAXB
-[仕様書](http://akizukidenshi.com/download/ds/taiyouyuden/GYSFDMAXB_spec_ae.pdf)
-
-***
 ## Camera  :  913-2664
-
-***
-## Wireless  :  IM920,IM920XS
+・[データシート](https://docs.rs-online.com/3b9b/0900766b814db308.pdf)<br>
+・[セットアップ方法](https://www.rs-online.com/designspark/raspberry-pi-camera-jp)
 
 ***
 ## DC-DC converter  :  AE-OKL-T6-W12N-C
+・[概要(秋月電子)](http://akizukidenshi.com/catalog/g/gK-07728/)
+
+***
+## GPS  :  AE-GYSFDMAXB
+・[概要(秋月電子)](http://akizukidenshi.com/catalog/g/gK-09991/)<br>
+・[仕様書](http://akizukidenshi.com/download/ds/taiyouyuden/GYSFDMAXB_spec_ae.pdf)<br>
+・[取扱説明書](http://akizukidenshi.com/download/ds/akizuki/AE-GPS_manual_r1.06_s.pdf)
+
+***
+## Wireless  :  IM920,IM920XS
+・[概要](https://www.interplan.co.jp/solution/wireless/im920/im920.php)<br>
+・[通信実験レポート](http://akizukidenshi.com/download/ds/interplan/TR01.pdf)<br>
+・[取扱説明書(ソフトウェア)](https://www.interplan.co.jp/support/solution/IM315/manual/IM920_SW_manual.pdf)
 
 ***
 ## READMEの書き方
