@@ -2,18 +2,38 @@
 # -*- coding: UTF-8 -*-
 '''
 パッケージpyserialをインストールすること
-pytho2.x系で動作
+pytho2.x系で動作(python3.*系も動作検証済み)
 Creater：Kaname Takano
 '''
 import serial
 import binascii
 import signal
 import sys
+import platform
+from serial.tools import list_ports
+
+#platformの切り替え
+if platform.system() == 'Windows':  #windows用
+    ports = list_ports.comports()
+    portnumber = None
+    for port in ports:
+        if (port.vid == 1027) and (port.pid == 24597): #プロダクトIDとベンダーIDが一致したら接続
+            portnumber = port.device
+            print("connect to " + portnumber)
+            break
+
+    if portnumber == None:
+        print("not connetc to im920!")
+        sys.exit(1)
+
+elif platform.system() == 'Linux': #Linux用
+    portnumber = '/dev/ttyUSB0'
 
 '''
 ctrl+cの命令
 '''
 def signal_handler(signal, frame):
+    print('exit')
     sys.exit()
 
 '''
@@ -22,7 +42,7 @@ mybaudrate:ボーレート
 '''
 def setSerial(mybaudrate):
     com = serial.Serial(
-        port     = '/dev/ttyUSB0',
+        port     = portnumber,
         baudrate = mybaudrate,
         bytesize = serial.EIGHTBITS,
         parity   = serial.PARITY_NONE,
@@ -47,7 +67,7 @@ def Rdid(mybaudrate):
     com.flushInput()
     com.write(b'RDID' + b'\r\n')
     com.flushOutput()
-    print com.readline().strip()
+    print(com.readline().strip())
     com.close()
 
 
@@ -68,7 +88,7 @@ def Sbrt(mybaudrate, setbaudrate):
     com.write(b'ENWR' + b'\r\n')
     com.flushOutput()
     com.readline()
-    com.write(b'SBRT ' + setbaudrate + b'\r\n')
+    com.write(b'SBRT ' + setbaudrate.encode('utf-8') + b'\r\n')
     com.flushOutput()
     com.readline()
     com.write(b'DSWR' + b'\r\n')
@@ -87,7 +107,7 @@ def Srid(mybaudrate, args):
     com.write(b'ENWR' + b'\r\n')
     com.flushOutput()
     com.readline()
-    com.write(b'SRID ' + args + b'\r\n')
+    com.write(b'SRID ' + args.encode('utf-8') + b'\r\n')
     com.flushOutput()
     com.readline()
     com.write(b'DSWR' + b'\r\n')
@@ -122,7 +142,7 @@ args:送信したい文字列 (数字の場合も文字列型にすること)
 def Send(mybaudrate, args):
     com = setSerial(mybaudrate)
     com.flushInput()
-    com.write(b'TXDA' + binascii.b2a_hex(args.decode('utf-8')) + b'\r\n')
+    com.write(b'TXDA' + binascii.b2a_hex(args.encode('utf-8')) + b'\r\n')
     com.flushOutput()
     com.readline()
     com.close()
@@ -137,16 +157,20 @@ def Reception(mybaudrate):
     com.flushInput()
 
     text = ""
-    text = com.readline().decode('utf-8').strip() #受信と空白の削除
-    text = text.replace("\r\n","")
-    text = text.split(":")[1]
-    text = text.split(",")
-
     cngtext = ""
-    for x in text:
-        cngtext += chr(int(x,16))
+    try:
+        text = com.readline().decode('utf-8').strip() #受信と空白の削除
+        com.close()
+        text = text.replace("\r\n","")
+        text = text.split(":")[1]
+        text = text.split(",")
 
-    com.close()
+        for x in text:
+            cngtext += chr(int(x,16))
+
+    except Exception:
+        print("not input data")
+
     return cngtext
 
 '''
@@ -154,42 +178,10 @@ def Reception(mybaudrate):
 mybaudrate:ボーレート
 '''
 def Repeater(mybaudrate):
-    com = setSerial(mybaudrate)
-    com.flushInput()
-
     signal.signal(signal.SIGINT, signal_handler)
 
     while True:
-        text = ''
-        com.flushInput()
-        text = com.readline().strip()
-        if text == '': continue
-        texts = text.split(':')
-        if len(texts) > 1:
-            text = text.split(":")[1]
-
-        com.write(b'TXDA ' + text + b'\r\n')
-        com.flushOutput()
-        com.readline()
-
-if __name__ == '__main__':
-    #ペアリング
-    #Srid(19200,'5187')
-
-    #削除
-    #Erid(19200)
-
-    #文字列送信
-    #Send(19200, 'Hello')
-
-    #文字列受信
-    #print Reception(19200)
-
-    #中継機化
-    #Repeater(19200)
-
-    #固有ID
-    #Rdid(19200)
-
-    #ボーレート設定
-    #Sbrt(19200, '4')
+        data = Reception(mybaudrate)
+        if len(data) != 0:
+            print("input data:", data)
+            Send(19200, data)
