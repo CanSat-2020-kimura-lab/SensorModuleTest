@@ -22,7 +22,7 @@
 
 ***
 ## 気圧センサ  :  BME280
-・[仕様書](file:///C:/Users/hheli/Downloads/BST-BME280.pdf)
+・[仕様書](http://www.ne.jp/asahi/o-family/extdisk/BME280/BME280_DJP.pdf)
 
 ***
 ## 9軸センサ  :  BMX055
