@@ -21,5 +21,17 @@
 ・[取扱説明書(ソフトウェア)](https://www.interplan.co.jp/support/solution/IM315/manual/IM920_SW_manual.pdf)
 
 ***
+## 気圧センサ  :  BME280
+・[仕様書](file:///C:/Users/hheli/Downloads/BST-BME280.pdf)
+
+***
+## 9軸センサ  :  BMX055
+・[仕様書](file:///C:/Users/hheli/Downloads/BST-BMX055.pdf)
+
+***
+## 照度センサ  :  TSL2561
+・[仕様書](file:///C:/Users/hheli/Downloads/TSL2561.pdf)
+
+***
 ## READMEの書き方
 [マークダウン記法まとめ](https://codechord.com/2012/01/readme-markdown/)
