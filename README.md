@@ -26,11 +26,11 @@
 
 ***
 ## 9軸センサ  :  BMX055
-・[仕様書](file:///C:/Users/hheli/Downloads/BST-BMX055.pdf)
+・[仕様書](https://www.mouser.jp/datasheet/2/783/BST-BMX055-DS000-1509552.pdf)
 
 ***
 ## 照度センサ  :  TSL2561
-・[仕様書](file:///C:/Users/hheli/Downloads/TSL2561.pdf)
+・[仕様書](https://strawberry-linux.com/pub/TSL2561.pdf)
 
 ***
 ## READMEの書き方
