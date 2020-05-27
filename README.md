@@ -33,5 +33,9 @@
 ・[仕様書](https://strawberry-linux.com/pub/TSL2561.pdf)
 
 ***
+## Motor Driver :  TC78H653FTG
+・[概要(秋月電子)](http://akizukidenshi.com/catalog/g/gK-14746/)
+
+***
 ## READMEの書き方
 [マークダウン記法まとめ](https://codechord.com/2012/01/readme-markdown/)
