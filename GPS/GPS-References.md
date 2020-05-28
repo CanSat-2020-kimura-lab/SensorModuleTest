@@ -8,21 +8,13 @@
 
 ・[micropyGPS](https://github.com/inmcm/micropyGPS) : GPSモジュールから送られてくるデータ(NMEA-0183というフォーマットの文字列)を扱う<br>
 ⇒ **使うためにはGithubからmicropyGPS.pyをダウンロードして、Pythonを起動するディレクトリーに置く**<br>
+⇒詳細は[こちら](https://github.com/CanSat-2020-kimura-lab/SensorModuleTest/blob/master/GPS/microGPS-detail.md)
 
-<pre>
-インストール/アンインストール<br>
-gitからクローンを作成し、setuptoolsを介してインストールを実行してインストールします。<br>
-  git clone https://github.com/inmcm/micropyGPS.git<br>
-  python setup.py install<br>
-または、pipを使用してgithubから直接インストールします。<br>
-  pip install git+https://github.com/inmcm/micropyGPS.git<<br>
-アンインストールするには、次のpipコマンドを使用します。<br>
-  pip uninstall micropyGPS<br>
-</pre>
+・[threading](https://docs.python.org/ja/3/library/threading.html) : 並列処理をする<br>
+⇒ .start() : スレッドの活動を開始する。スレッドオブジェクト１つに対して、１回しか使えない
+⇒ .daemon : このスレッドがデーモンスレッドか (True) か否か (False) を示すブール値。必ずstart()の前に設定する。
 
-・[threading]()<br>
-
-・[time]()<br>
+・[time](https://docs.python.org/ja/3/library/time.html?highlight=time#module-time)<br>
 
 ***
 ## 参考文献
