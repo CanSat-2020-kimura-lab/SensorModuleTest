@@ -7,14 +7,21 @@
 ・通信モジュールのBBM用テストプログラム<br>
 ・去年と同じ
 
+### IM920.py
+・IM920ライブラリ
+
 ***
 ## ライブラリの概要と主要な構文
+※同じライブラリでもリンク先が違うことがあるため注意
+### IM920.py
+・[serial](https://pyserial.readthedocs.io/en/latest/pyserial_api.html)<br>
+
 ### Wireless-test2.py
 ・[sys](https://qiita.com/jp0003menegi/items/fbf407af7d294c09481a) : Pythonのインタプリタや実行環境に関する情報を扱うためのライブラリ<br>
 
-・[time]
+・[time](https://docs.python.org/ja/3/library/time.html?highlight=time#module-time)<br>
 
-・[difflib]
+・[difflib](http://docs.daemon.ac/python/Python-Docs-2.5/lib/module-difflib.html) : 差異の計算を助ける<br>
 
 ・[pigpio](http://abyz.me.uk/rpi/pigpio/python.html) : GPIOを制御する<br>
 ⇒ .pigpio.py : 必須。<br>
@@ -25,9 +32,9 @@
 
 ・[binascii](https://docs.python.org/ja/3/library/binascii.html) : バイナリデータと ASCII データとの間での変換<br>
 
-・[IM920]
+・IM920 : 自作関数
 
-・[convertIMG2BYTES]
+・convertIMG2BYTES : 自作関数と思われる。文字列とバイト列の変換
 
 ・[cv2](http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_gui/py_image_display/py_image_display.html) : 画像を扱う<br>
 ⇒cv2.imread_color : カラー画像として読み込む．画像の透明度は無視される．デフォルト値<br>
