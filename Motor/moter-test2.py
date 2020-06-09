@@ -21,7 +21,7 @@ pi1.set_mode(STBY,pigpio.OUTPUT)
 def set_motor_r(pi1, a, b, t):
 	pi1.write(Ena1, a)
 	pi1.write(Pha1,b)
-	time.sleep(t
+	time.sleep(t)
   
 def set_motor_l(pi1, f, g, t):
 	pi1.write(Ena2, f)
@@ -41,14 +41,14 @@ try:
 	for i in range(2):
 		set_motor_r(pi1, 1, 1, 2.0) # normal rotation
 		set_motor_r(pi1, 0, 0, 1.0) # stop
-    set_motor_l(pi1, 1, 1, 2.0) # normal rotation
+    		set_motor_l(pi1, 1, 1, 2.0) # normal rotation
 		set_motor_l(pi1, 0, 0, 1.0) # stop
 
 
 	for i in range(2):
 		set_motor_r(pi1, 1, 0, 2.0) # reverse rotation
 		set_motor_r(pi1, 0, 0, 1.0) # stop
-    set_motor_l(pi1, 1, 0, 2.0) # reverse rotation
+   	        set_motor_l(pi1, 1, 0, 2.0) # reverse rotation
 		set_motor_l(pi1, 0, 0, 1.0) # stop
 
 except KeyboardInterrupt:
