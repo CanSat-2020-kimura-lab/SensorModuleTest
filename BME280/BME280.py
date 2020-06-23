@@ -5,20 +5,20 @@ from smbus import SMBus
 import time
 
 bus_number  = 1
-i2c_address = 0x76
+i2c_address = 0x76	#16進数76番でi2c通信
 
 bus = SMBus(bus_number)
 
-digT = []
-digP = []
-digH = []
+digT = []	#Temperature[℃]
+digP = []	#Pressure[hPa]
+digH = []	#Humidity[%]
 t_fine = 0.0
 
+#--　ポインタ/レジスタへの書き込み　--#
 def writeReg(reg_address, data):
-	'''
-	'''
 	bus.write_byte_data(i2c_address,reg_address,data)
 
+#--　キャリブレーションパラメータの取得　--#
 def bme280_calib_param():
 	'''
 	'''
@@ -61,10 +61,8 @@ def bme280_calib_param():
 		if digH[i] & 0x8000:
 			digH[i] = (-digH[i] ^ 0xFFFF) + 1
 
+#--　気圧データ読み込み　--#
 def compensate_P(adc_P):
-	'''
-	気圧データ読み込み
-	'''
 	global  t_fine
 	pressure = 0.0
 
@@ -116,10 +114,8 @@ def compensate_H(adc_H):
 		var_h = 0.0
 	return var_h
 
+#--　セットアップ　--#
 def bme280_setup():
-	'''
-	セットアップ
-	'''
 	osrs_t = 1			#Temperature oversampling x 1
 	osrs_p = 1			#Pressure oversampling x 1
 	osrs_h = 1			#Humidity oversampling x 1
@@ -136,10 +132,8 @@ def bme280_setup():
 	writeReg(0xF4,ctrl_meas_reg)
 	writeReg(0xF5,config_reg)
 
+#--　データ読み込み　--#
 def bme280_read():
-	'''
-	データ読み込み
-	'''
 	try:
 		data = []
 		for i in range (0xF7, 0xF7+8):
@@ -149,12 +143,12 @@ def bme280_read():
 		temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
 		hum_raw  = (data[6] << 8)  |  data[7]
 
-		temp=compensate_T(temp_raw)
-		pres=compensate_P(pres_raw)
-		hum=compensate_H(hum_raw)
+		temp = compensate_T(temp_raw)
+		pres = compensate_P(pres_raw)
+		hum = compensate_H(hum_raw)
 
-		MEAN_SEA_LEVEL_PRESSURE = 1013
-		alt = ((temp+273.15)/0.0065)* (pow(MEAN_SEA_LEVEL_PRESSURE / pres, 0.190294957) - 1.0)
+		SeaLevelPres = 1013
+		alt = ((temp+273.15)/0.0065)* (pow(SeaLevelPres / pres, (1/5.257)) - 1.0)
 		value = [temp, pres, hum, alt]
 
 		for i in range(len(value)):
