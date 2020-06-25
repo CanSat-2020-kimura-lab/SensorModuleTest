@@ -1,12 +1,15 @@
 ## プログラム概要
 ### GPS-test.py 
-・GPSのBBM用テストプログラム
+・GPSのBBM用テストプログラム (没)
 
 ### GPS-Navigate.py
 ・GPSによるローバー制御プログラム
 
 ### microGPS-deetail.md
-・microGPSライブラリの仕様書
+・microGPSライブラリの仕様書 (没)
+
+### softSerialTest.py
+・GPSのBBM用テストプログラム(2019と同じ)
 
 ***
 ## ライブラリの概要と主要な構文
