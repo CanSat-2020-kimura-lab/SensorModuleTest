@@ -166,7 +166,7 @@ def readLux():
 	except:
 		lux2 = -1.0
 
-	value = [lux1 ,lux2]
+	value = [lux1, lux2]
 	return value
 
 if __name__ == "__main__":
