@@ -114,11 +114,11 @@ class Illumi:
 
         return lux
 sensor1 = ""
-#sensor2 = ""
+sensor2 = ""
 
 def tsl2561_setup():
 	global sensor1
-	#global sensor2
+	global sensor2
 	try:
 		sensor1 = Illumi(0x39, 1)
 		sensor1.powerOn()
@@ -130,7 +130,7 @@ def tsl2561_setup():
 			sensor1.setIntegrationTime('default')
 		except:
 			pass
-'''
+
 	try:
 		sensor2 = Illumi(0x29, 1)
 		sensor2.powerOn()
@@ -142,10 +142,10 @@ def tsl2561_setup():
 			sensor2.setIntegrationTime('default')
 		except:
 			pass
-'''
+
 def readLux():
 	global sensor1
-	#global sensor2　#
+	global sensor2
 	#sensor1  = Illumi(0x39,1)
 	#sensor1.powerOn()
     #sensor1.setHighGain()
@@ -160,13 +160,13 @@ def readLux():
 		lux1 = sensor1.getLux()
 	except:
 		lux1 = -1.0
-'''
+
 	try:
 		lux2 = sensor2.getLux()
 	except:
 		lux2 = -1.0
-'''
-	value = [lux1] #[lux2]
+
+	value = [lux1 ,lux2]
 	return value
 
 if __name__ == "__main__":
@@ -174,7 +174,7 @@ if __name__ == "__main__":
 		tsl2561_setup()
 		while 1:
 			lux = readLux()
-			print(str(lux[0])+"	")
+			print(str(lux[0])+"	:	"+str(lux[1]))
 			#print(type(lux[0]+lux[1]))
 			time.sleep(0.5)
 	except KeyboardInterrupt:
