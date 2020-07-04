@@ -114,7 +114,7 @@ class Illumi:
 
         return lux
 sensor1 = ""
-sensor2 = ""
+#sensor2 = ""
 
 def tsl2561_setup():
 	global sensor1
