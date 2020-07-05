@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/home/pi/git/kimuralab/SensorModuleTest/Camera')
-sys.path.append('/home/pi/git/kimuralab/SensorModuleTest/Motor')
+sys.path.append('/home/pi/git/kimuralab/Detection')
 sys.path.append('/home/pi/git/kimuralab/SensorModuleTest/TSL2561')
 import time
 import difflib
@@ -9,7 +9,7 @@ import serial
 import binascii
 import Capture
 import ParaDetection
-import Motor
+import runtest
 import TSL2561
 import cv2
 import numpy as np
