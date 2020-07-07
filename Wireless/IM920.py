@@ -373,7 +373,14 @@ if __name__ == '__main__':
 	pi=pigpio.pi()
 	pi.set_mode(22,pigpio.OUTPUT)
 	pi.write(22,1)
+	print("power_on")
 	time.sleep(2)
+	Send("Hello")
+	time.sleep(2)
+	pi.write(22,0)
+	print("power_off")
+	
+	'''
 	i = 0
 	while 1:
 		print("P" + str(i))
@@ -387,3 +394,4 @@ if __name__ == '__main__':
 			i = 0
 		time.sleep(1)
 	#Reception()
+	'''
