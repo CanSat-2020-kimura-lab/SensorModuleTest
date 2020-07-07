@@ -3,9 +3,9 @@ import pigpio
 
 pi = pigpio.pi()
 
-meltPin = 17
+meltPin = 24
 
-def Melting(t_melt = 5):
+def Melting(t_melt = 3):
 	pi.write(meltPin, 0)
 	time.sleep(1)
 	pi.write(meltPin, 1)
