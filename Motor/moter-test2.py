@@ -1,13 +1,13 @@
 import pigpio
 import time
 
-Ena1 = 12
-Pha1 = 21
-Ena2 = 
-Pha2 = 
-LARGE = 8
-MODE = 7
-STBY = 18
+Ena1 = 13
+Pha1 = 19
+Ena2 = 12
+Pha2 = 25
+LARGE = 10
+MODE = 9
+STBY = 11
 
 pi1 = pigpio.pi()
 pi1.set_mode(Ena1, pigpio.OUTPUT)
